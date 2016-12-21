@@ -4,7 +4,7 @@ class CreateBoats < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :max_containers
       t.string :location
-
+      
       t.timestamps
     end
   end
