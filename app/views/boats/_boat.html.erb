@@ -1,0 +1,28 @@
+<ul class="boat-info">
+	<h3><span class="rest-in-place" data-url="/boats/<%= boat.id %>" data-object="boat" data-attribute="name" data-placeholder="Enter a name"><%= boat.name %></span></h3>
+
+	<li>Location: <span class="rest-in-place" data-formtype="select" data-url="/boats/<%= boat.id %>" data-object="boat" data-attribute="location" data-placeholder="Enter a location"><%= boat.location %></span></li>
+
+	<li>Max Containers: <span class="rest-in-place" data-url="/boats/<%= boat.id %>" data-object="boat" data-attribute="max_containers" data-placeholder="Enter a Max Containers Value"><%= boat.max_containers %></span></li>
+	<div class="avatar">
+		<%= image_tag boat.avatar.url(:thumb) %>
+	</div>
+	<li class="boats-jobs">
+		<a class="toggle-jobs down-arrow color-blue">Jobs</a>
+		<ul class="jobs-list">
+			<% boat.jobs.each do |job| %>
+				<li><%= link_to job.name, job_path(job), class: "color-blue" %></li>
+			<% end %>
+		</ul>
+	</li>
+	<span class="add-to-job pos-a">
+		<%= link_to "Add To Job", add_to_job_path(boat_id: boat.id), remote: true, class: "color-blue btn-flat" %>
+	</span>
+	<span class="add-job pos-a">
+		<%= link_to "New Job", new_job_path(boat_id: boat.id), remote: true, class: "color-blue btn-flat" %>
+	</span>
+	<li>&nbsp;</li>
+	<span class="delete-boat pos-a">
+		<%= link_to "Delete", boat, remote: true, method: :delete, data: {confirm: "This is permanent. Ya sure, man?"}, class: "color-red btn-flat delete-boat-btn" %>
+	</span>
+</ul>

@@ -1,0 +1,3 @@
+$link = window.new_job_link
+$link.closest('.boat-info').find('.jobs-list').append('<li><a class="color-blue" href="<%= job_path(@job) %>"><%= @job.name %><a/></li>')
+$('#addToJobModal').find('.close').click()

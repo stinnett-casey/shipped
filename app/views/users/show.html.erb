@@ -1,0 +1,45 @@
+<div class="boat-list">
+	<% @boats.each do |boat| %>
+		<%= render 'boats/boat', boat: boat %>
+	<% end %>
+
+	<ul class="boat-info">
+		<%= form_for @boat, :html => { :multipart => true },  remote: true do |f| %>
+			<li>
+				<div class="input-wrapper pos-r">
+					<%= f.text_field :name, class: "pretty-input pos-r" %>
+					<span class="placeholder-text">Name</span>
+				</div>
+			</li>
+			
+			<li>
+				<div class="input-wrapper pos-r">
+					<%= f.text_field :max_containers, class: "pretty-input pos-r" %>
+					<span class="placeholder-text">Max Containers</span>
+				</div>
+			</li>
+			
+			<li>
+				<div class="input-wrapper pos-r">
+					<%= f.select :location, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "pretty-input pos-r"} %>
+					<span class="placeholder-text">Location</span>
+				</div>
+			</li>
+
+			<li>
+				<div class="input-wrapper pos-r">
+					<%= f.file_field :avatar %>
+				</div>
+			</li>
+			
+			<li><%= f.submit "Create", :disable_with => 'Creating...', class: "green-button"%>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<br>
+
+<div class="modal fade" id="addToJobModal" tabindex="-1" role="dialog" aria-labelledby="addToJobModalLabel">
+  
+</div>
+

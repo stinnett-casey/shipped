@@ -1,0 +1,27 @@
+<div class="main">
+	<div class="form-wrapper pretty-form">
+		<p class="banner">Edit <span id="boat-name-header"><%= @boat.name %></span></p>
+		<%= form_for @boat, {method: :put} do |f| %>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :name, class: "pretty-input", autofocus: true, onFocus: "this.select();" %>
+				<span class="placeholder-text">Name</span>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :max_containers, class: "pretty-input" %>
+				<span class="placeholder-text">Max Containers</span>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.select :location, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "pretty-input"} %>
+				<span class="placeholder-text">Location</span>
+			</div>
+			<div class="avatar">
+				<label for="boat_avatar">
+					<%= image_tag @boat.avatar.url(:thumb), id: "boat-image" %>
+				</label>
+				<%= f.file_field :avatar, style: "display: none;" %>
+			</div>
+			<%= f.submit "Save", :disable_with => 'Saving...', class: "green-button" %>
+		<% end %>
+	</div>
+</div>
+  

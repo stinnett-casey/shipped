@@ -1,0 +1,20 @@
+<div class="main">
+	<div class="form-wrapper pretty-form">
+		<button type="button" style="position: relative;bottom: 10px;" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<p class="banner">Add 
+			<span style="text-decoration:underline;">
+				<%= @boat.name %>
+			</span>
+			To A Job
+		</p>
+		<% @jobs.each do |job| %>
+			<ul>Job: <%= job.name %>
+				<% job.boats.each do |boat| %>
+					<li>Boat: <%= boat.name %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+</div>

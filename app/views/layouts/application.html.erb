@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shipped</title>
+    <%= csrf_meta_tags %>
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="home-button fleft">Boat Management System</h1>
+    	<p class="notice fleft"><%= notice %></p>
+    	<p class="alert fleft"><%= alert %></p>
+      <nav id="header-nav">
+        <ul class="pos-r">
+          <% currU = current_user %>
+          <% if currU %>
+            <li class="pos-a r60"><%= link_to currU.full_name, user_path(currU), class: "color-green" %></li> 
+            <li class="pos-a r-30"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "color-gray" %></li>
+          <% else %>
+            <li class="pos-a r60"><%= link_to "Sign In", new_user_session_path, class: "color-green" %></li>
+            <li class="pos-a r-30"><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <div class="clear-fix">&nbsp;</div>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<div class="main">
+	<div class="form-wrapper pretty-form">
+		<p class="banner">New Boat</p>
+		<%= form_for @boat do |f| %>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :name, class: "pretty-input", value: (@old_params.present? ? @old_params[:boat][:name].to_s : ''), autofocus: true, onFocus: "this.select();" %>
+				<span class="placeholder-text">Name</span>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :max_containers, class: "pretty-input", value: (@old_params.present? ? @old_params[:boat][:max_containers].to_s : '') %>
+				<span class="placeholder-text">Max Containers</span>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.label :location, "Location" %>
+				<%= f.select :location, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "pretty-input"} %>
+			</div>
+			<%= f.submit "Create", :disable_with => 'Creating...', class: "green-button" %>
+		<% end %>
+	</div>
+</div>
+  

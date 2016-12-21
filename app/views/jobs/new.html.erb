@@ -1,0 +1,40 @@
+<% bp = @boat.present? %>
+<div class="main">
+	<div class="form-wrapper pretty-form">
+		<p class="banner">Create a New Job <%= "for #{@boat.name}" if bp %></p>
+		<%= form_for @job do |f| %>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :name, class: "pretty-input", autofocus: true %>
+				<span class="placeholder-text">Name</span>
+				<span class="hint">Name must be unique</span>
+			</div>
+			<div class="input-wrapper">
+				<%= f.label :origin, "Origin" %>
+				<%= f.select :origin, options_for_select(['Sweden', 'USA', 'China', 'Thailand', 'Norway'], (bp ? @boat.location : '')), {}, {class: "pretty-input #{'disabled' if bp}", disabled: (bp ? true : false)} %>
+				<%= f.hidden_field :origin, value: (bp ? @boat.location : '') %>
+			</div>
+			<div class="input-wrapper">
+				<%= f.label :destination, "Destination" %>
+				<%= f.select :destination, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "pretty-input"} %>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.text_field :number_of_containers, class: "pretty-input" %>
+				<span class="placeholder-text">Number of Containers</span>
+			</div>
+			<div class="input-wrapper pos-r" id="cost">
+				<%= f.text_field :cost, minimum: 1000, class: "pretty-input" %>
+				<span class="dollar-sign">$</span>
+				<span class="placeholder-text">Cost</span>
+				<span class="hint">Cost must be greater than $1000</span>
+			</div>
+			<div class="input-wrapper pos-r">
+				<%= f.text_area :description, class: "pretty-input", minlength: 50, onFocus: "this.select();" %>
+				<span class="placeholder-text">Description</span>
+				<span class="char-count color-red">50</span>
+				<span class="hint">Description must be 50 characters or more</span>
+			</div>
+			<input type="hidden" name="boat[boat_id]" value="<%= @boat.id if bp %>">
+			<%= f.submit "Create", :disable_with => 'Creating...', class: "green-button" %>
+		<% end %>
+	</div>
+</div>
