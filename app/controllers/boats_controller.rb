@@ -16,7 +16,7 @@ class BoatsController < ApplicationController
         format.js 
         # redirect_to user_path(current_user) # for not AJAX
       else
-        format.json { render :json => { :error => @boat.errors.full_messages }, :status => 422 }
+        format.json { render json: { error: @boat.errors.full_messages }, status: 422 }
         # flash[:alert] = "Boat not added. Must have a unique name." #for not AJAX
         # render new_boat_path # for not AJAX
       end
@@ -35,7 +35,7 @@ class BoatsController < ApplicationController
     if @boat.update_attributes(boat_params)
       respond_to do |format|
         format.js
-        format.json { render :json => @boat }
+        format.json { render json: @boat }
       end
       # flash[:notice] = "#{@boat.name} updated!" #for not AJAX
       # redirect_to user_path(current_user)

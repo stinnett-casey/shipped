@@ -1,2 +1,8 @@
+<% if @boat.errors.full_messages.any? %>
+  <% @boat.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>

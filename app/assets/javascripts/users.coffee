@@ -37,6 +37,7 @@ $ ->
 	$('.modal').on 'shown.bs.modal', ->
 		$('.modal').focus()	
 
+	#to allow you to edit the boat location
 	RestInPlaceEditor.forms.select =
 	  activateForm: ->
 	    value = $.trim(@elementHTML())

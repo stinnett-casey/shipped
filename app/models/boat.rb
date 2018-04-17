@@ -10,7 +10,8 @@ class Boat < ApplicationRecord
 	:content_type => /\Aimage\/.*\Z/
 	
 	validates :name, uniqueness: true
-	validate :one_of_locations
+	# validate :one_of_locations
+	validates_inclusion_of :location, in: ['Sweden', 'USA', 'China', 'Thailand', 'Norway']
 
 	def one_of_locations
 		locations_array = ['Sweden', 'USA', 'China', 'Thailand', 'Norway']

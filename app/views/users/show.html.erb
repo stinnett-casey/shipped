@@ -4,7 +4,7 @@
 	<% end %>
 
 	<ul class="boat-info">
-		<%= form_for @boat, :html => { :multipart => true },  remote: true do |f| %>
+		<%= form_for @boat, html: { multipart: true }, remote: true do |f| %>
 			<li>
 				<div class="input-wrapper pos-r">
 					<%= f.text_field :name, class: "pretty-input pos-r" %>
@@ -39,7 +39,5 @@
 </div>
 <br>
 
-<div class="modal fade" id="addToJobModal" tabindex="-1" role="dialog" aria-labelledby="addToJobModalLabel">
-  
-</div>
+<div class="modal fade" id="addToJobModal" tabindex="-1" role="dialog" aria-labelledby="addToJobModalLabel"></div>
 
